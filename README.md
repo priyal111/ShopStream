@@ -1,30 +1,45 @@
-# ShopStream: Real-Time Data Pipeline for E-Commerce Analytics
+# 🚀 ShopStream: Real-Time Data Pipeline for E-Commerce Analytics
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/your-username/ShopStream)
 ![GitHub license](https://img.shields.io/github/license/your-username/ShopStream)
 ![GitHub last commit](https://img.shields.io/github/last-commit/your-username/ShopStream)
 
-## 🧠 About
-**ShopStream** is a real-time data analytics pipeline project that simulates an e-commerce environment using minimal tech stack. It handles data ingestion, processing, storage, transformation, warehousing, and visualization efficiently.
+> A minimal yet scalable real-time data pipeline project that simulates a modern e-commerce analytics system.
 
-## ⚙️ Tech Stack (Bare Minimum)
-| Component       | Technology                                             |
-| --------------- | ------------------------------------------------------ |
-| Ingestion       | Python (simulate stream), Kafka (optional)             |
-| Processing      | PySpark / Pandas                                       |
-| Storage         | Azure Blob / AWS S3 / CSV                              |
-| Transformation  | PySpark / SQL                                          |
-| Data Warehouse  | Azure Synapse / AWS Redshift / SQLite                  |
-| Visualization   | Power BI / Google Data Studio / Matplotlib             |
-| Orchestration   | Python / (optional: Airflow)                           |
-| Version Control | Git + GitHub                                           |
+---
 
-## 📁 Project Structure
+## 📖 Overview
+
+**ShopStream** is a real-time data pipeline built for simulating and analyzing e-commerce user activity. It demonstrates core data engineering concepts: streaming ingestion, ETL (Extract, Transform, Load), storage, warehousing, and visualization using a simple yet flexible tech stack.
+
+The pipeline is modular — making it adaptable to different tools (cloud/on-premise) and perfect for learning or showcasing data engineering skills.
+
+---
+
+## ⚙️ Tech Stack (Minimal Setup)
+
+| Layer            | Tool/Tech                          |
+|------------------|------------------------------------|
+| Ingestion        | Python Script (simulated stream), Kafka (optional) |
+| Processing       | PySpark / Pandas                   |
+| Storage          | AWS S3 / Azure Blob / Local CSV    |
+| Transformation   | SQL / PySpark                      |
+| Data Warehouse   | SQLite / AWS Redshift / Azure Synapse |
+| Visualization    | Power BI / Google Data Studio / Matplotlib |
+| Orchestration    | Python Script / (Optional: Airflow) |
+| Version Control  | Git + GitHub                       |
+
+---
+
+## 📁 Folder Structure
+
+```bash
 shopstream/
-├── data/ # Raw input CSVs or streamed events
-├── ingestion/ # Stream simulator and data ingestion
-├── processing/ # Transformation scripts (PySpark/Pandas)
-├── storage/ # Uploading to S3/Blob or saving locally
-├── warehouse/ # SQLite/Redshift/Synapse storage layer
-├── visualization/ # Reports, dashboards, or Python plots
-├── orchestrator/ # Script to automate end-to-end pipeline
+├── data/              # Raw input CSVs or simulated stream events
+├── ingestion/         # Streaming scripts & data ingestion logic
+├── processing/        # Data cleaning and transformation scripts
+├── storage/           # Upload to S3, Azure Blob, or local store
+├── warehouse/         # SQLite/Redshift/Synapse loaders
+├── visualization/     # Reports, dashboards, or Python visualizations
+├── orchestrator/      # Scripts to automate pipeline end-to-end
+└── README.md          # Project documentation (this file)
