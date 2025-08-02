@@ -3,35 +3,85 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ShopStream: Real-Time Data Pipeline</title>
+  <title>ShopStream | E-Commerce Analytics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f2f4f8;
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #e1bee7);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
     header {
-      background: #2c3e50;
-      color: white;
-      padding: 20px;
+      background-color: #4a148c;
+      padding: 30px 20px;
       text-align: center;
+      color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      margin-top: 10px;
+      opacity: 0.9;
+    }
+
     section {
-      padding: 20px;
-      margin: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #2c3e50;
-    }
-    footer {
+      padding: 60px 20px;
       text-align: center;
-      padding: 10px;
-      background: #2c3e50;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .feature-box {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      width: 280px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .feature-box h3 {
+      color: #6a1b9a;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background-color: #4a148c;
+      padding: 20px;
+      text-align: center;
       color: white;
+      margin-top: auto;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -43,30 +93,29 @@
   </header>
 
   <section>
-    <h2>🔷 Project Overview</h2>
-    <p>ShopStream is a data engineering solution designed to collect, process, store, and visualize e-commerce data in real-time using modern technologies like Python, PySpark, cloud storage, and BI tools.</p>
-  </section>
-
-  <section>
-    <h2>📂 Modules Included</h2>
-    <ul>
-      <li>1. Data Ingestion (Kafka / Python)</li>
-      <li>2. Data Processing (PySpark / Pandas)</li>
-      <li>3. Storage (Azure Blob / S3 / CSV)</li>
-      <li>4. Data Transformation (SQL / PySpark)</li>
-      <li>5. Data Warehouse (Synapse / Redshift)</li>
-      <li>6. Data Visualization (Power BI / Data Studio)</li>
-      <li>7. Orchestration (Airflow / Python Scheduler)</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>📘 GitHub Repository</h2>
-    <p><a href="https://github.com/priyal111/ShopStream" target="_blank">View Full Source Code on GitHub</a></p>
+    <h2>Why ShopStream?</h2>
+    <div class="features">
+      <div class="feature-box">
+        <h3>Live Data Processing</h3>
+        <p>Handle real-time customer and sales data with low latency.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Visual Insights</h3>
+        <p>Track trends, KPIs, and performance across regions via sleek dashboards.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Plug & Play Architecture</h3>
+        <p>Flexible and scalable tech stack from Python to Power BI.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Cloud Friendly</h3>
+        <p>Supports AWS S3, Azure Blob Storage, Redshift, Synapse & more.</p>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <p>© 2025 ShopStream Project by Priyal Gupta</p>
+    Made with 💜 by <a href="https://github.com/priyal111" target="_blank">Priyal Gupta</a>
   </footer>
 
 </body>
