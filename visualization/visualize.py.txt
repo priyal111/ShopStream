@@ -1,0 +1,36 @@
+# visualization/visualize.py
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import sqlite3
+import os
+
+DB_PATH = 'data/shopstream_warehouse.db'
+IMG_PATH = 'visualization/output_sales_chart.png'
+
+def visualize_data(db_path=DB_PATH, image_path=IMG_PATH):
+    if not os.path.exists(db_path):
+        raise FileNotFoundError(f"{db_path} not found. Run load_to_sqlite.py first.")
+
+    print("[INFO] Connecting to SQLite database...")
+    conn = sqlite3.connect(db_path)
+    df = pd.read_sql("SELECT * FROM product_sales", conn)
+    conn.close()
+
+    print("[INFO] Generating sales chart...")
+    plt.figure(figsize=(10, 6))
+    sns.barplot(data=df, x='product', y='total_revenue', palette='viridis')
+    plt.title('Total Revenue by Product')
+    plt.xlabel('Product')
+    plt.ylabel('Revenue (₹)')
+    plt.tight_layout()
+
+    print(f"[INFO] Saving chart to: {image_path}")
+    os.makedirs(os.path.dirname(image_path), exist_ok=True)
+    plt.savefig(image_path)
+    plt.close()
+    print("[DONE] Visualization complete.")
+
+if __name__ == "__main__":
+    visualize_data()

@@ -1,0 +1,36 @@
+# processing/process_data.py
+
+import pandas as pd
+import os
+
+STREAMED_DATA_PATH = 'data/streamed_data.csv'
+PROCESSED_DATA_PATH = 'data/processed_data.csv'
+
+def process_data(input_file=STREAMED_DATA_PATH, output_file=PROCESSED_DATA_PATH):
+    if not os.path.exists(input_file):
+        raise FileNotFoundError(f"{input_file} not found. Run simulate_stream.py first.")
+
+    print("[INFO] Reading streamed data...")
+    df = pd.read_csv(input_file)
+
+    print("[INFO] Cleaning data...")
+    # Drop rows with any missing values
+    df.dropna(inplace=True)
+
+    # Convert columns to appropriate types
+    df['quantity'] = pd.to_numeric(df['quantity'], errors='coerce')
+    df['price'] = pd.to_numeric(df['price'], errors='coerce')
+    df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
+
+    # Drop rows with invalid conversions
+    df.dropna(inplace=True)
+
+    # Add total sales column
+    df['total_sales'] = df['quantity'] * df['price']
+
+    print("[INFO] Saving cleaned data...")
+    df.to_csv(output_file, index=False)
+    print(f"[DONE] Processed data written to: {output_file}")
+
+if __name__ == "__main__":
+    process_data()

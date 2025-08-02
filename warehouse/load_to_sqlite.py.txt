@@ -1,0 +1,38 @@
+# warehouse/load_to_sqlite.py
+
+import pandas as pd
+import sqlite3
+import os
+
+TRANSFORMED_DATA_PATH = 'data/transformed_data.csv'
+DB_PATH = 'data/shopstream_warehouse.db'
+
+def load_to_sqlite(csv_path=TRANSFORMED_DATA_PATH, db_path=DB_PATH):
+    if not os.path.exists(csv_path):
+        raise FileNotFoundError(f"{csv_path} not found. Run transform_data.py first.")
+
+    print("[INFO] Reading transformed data...")
+    df = pd.read_csv(csv_path)
+
+    print("[INFO] Connecting to SQLite database...")
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+
+    print("[INFO] Creating table: product_sales...")
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS product_sales (
+            product TEXT,
+            total_quantity_sold INTEGER,
+            total_revenue REAL
+        )
+    ''')
+
+    print("[INFO] Inserting data into product_sales table...")
+    df.to_sql('product_sales', conn, if_exists='replace', index=False)
+
+    conn.commit()
+    conn.close()
+    print(f"[DONE] Data loaded into SQLite DB at: {db_path}")
+
+if __name__ == "__main__":
+    load_to_sqlite()

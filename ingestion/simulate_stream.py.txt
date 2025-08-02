@@ -1,0 +1,31 @@
+# ingestion/simulate_stream.py
+
+import csv
+import time
+import os
+
+RAW_DATA_PATH = 'data/raw_data.csv'
+SIMULATED_STREAM_PATH = 'data/streamed_data.csv'
+
+def simulate_stream(input_file=RAW_DATA_PATH, output_file=SIMULATED_STREAM_PATH, delay=1):
+    if not os.path.exists(input_file):
+        raise FileNotFoundError(f"{input_file} not found. Please place a sample CSV in data/")
+
+    print("[INFO] Starting data stream simulation...")
+
+    with open(input_file, 'r') as infile, open(output_file, 'w', newline='') as outfile:
+        reader = csv.reader(infile)
+        writer = csv.writer(outfile)
+
+        headers = next(reader)
+        writer.writerow(headers)
+
+        for row in reader:
+            writer.writerow(row)
+            print(f"[STREAMED] {row}")
+            time.sleep(delay)  # Simulate delay between events
+
+    print(f"[DONE] Streamed data written to: {output_file}")
+
+if __name__ == "__main__":
+    simulate_stream()

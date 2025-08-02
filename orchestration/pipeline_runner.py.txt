@@ -1,0 +1,47 @@
+# orchestration/pipeline_runner.py
+
+import os
+import time
+
+# Step-wise imports
+from ingestion.simulate_stream import simulate_stream
+from processing.process_data import process_data
+from transformation.transform_data import transform_data
+from warehouse.load_to_sqlite import load_to_sqlite
+from visualization.visualize import visualize_data
+
+def run_pipeline():
+    print("="*50)
+    print("🚀 Running ShopStream Data Pipeline")
+    print("="*50)
+
+    try:
+        # Step 1: Simulate Ingestion
+        print("\n🔄 Step 1: Simulating Data Stream...")
+        simulate_stream(delay=0.2)  # Faster for demo
+
+        # Step 2: Data Cleaning
+        print("\n🧹 Step 2: Processing Streamed Data...")
+        process_data()
+
+        # Step 3: Transformation
+        print("\n📊 Step 3: Transforming Data...")
+        transform_data()
+
+        # Step 4: Load to Warehouse
+        print("\n🏢 Step 4: Loading Data to SQLite Warehouse...")
+        load_to_sqlite()
+
+        # Step 5: Visualization
+        print("\n📈 Step 5: Visualizing Results...")
+        visualize_data()
+
+        print("\n✅ Pipeline Completed Successfully!")
+        print("📍 Visualization saved at: visualization/output_sales_chart.png")
+        print("📍 SQLite DB created at: data/shopstream_warehouse.db")
+
+    except Exception as e:
+        print(f"\n❌ Pipeline failed: {e}")
+
+if __name__ == "__main__":
+    run_pipeline()

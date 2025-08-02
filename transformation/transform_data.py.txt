@@ -1,0 +1,35 @@
+# transformation/transform_data.py
+
+import pandas as pd
+import os
+
+PROCESSED_DATA_PATH = 'data/processed_data.csv'
+TRANSFORMED_DATA_PATH = 'data/transformed_data.csv'
+
+def transform_data(input_file=PROCESSED_DATA_PATH, output_file=TRANSFORMED_DATA_PATH):
+    if not os.path.exists(input_file):
+        raise FileNotFoundError(f"{input_file} not found. Run process_data.py first.")
+
+    print("[INFO] Reading processed data...")
+    df = pd.read_csv(input_file)
+
+    print("[INFO] Performing transformations...")
+
+    # Total sales per product
+    transformed_df = df.groupby('product', as_index=False).agg({
+        'quantity': 'sum',
+        'total_sales': 'sum'
+    }).sort_values(by='total_sales', ascending=False)
+
+    # Rename columns
+    transformed_df.rename(columns={
+        'quantity': 'total_quantity_sold',
+        'total_sales': 'total_revenue'
+    }, inplace=True)
+
+    print("[INFO] Saving transformed data...")
+    transformed_df.to_csv(output_file, index=False)
+    print(f"[DONE] Transformed data written to: {output_file}")
+
+if __name__ == "__main__":
+    transform_data()
