@@ -1,21 +1,22 @@
 # ShopStream: Real-Time Data Pipeline for E-Commerce Analytics
 
-![ShopStream Banner](https://via.placeholder.com/800x300.png?text=ShopStream+Project)
+![GitHub repo size](https://img.shields.io/github/repo-size/your-username/ShopStream)
+![GitHub license](https://img.shields.io/github/license/your-username/ShopStream)
+![GitHub last commit](https://img.shields.io/github/last-commit/your-username/ShopStream)
 
-## 🚀 Overview
+## 🧠 About
+**ShopStream** is a real-time data analytics pipeline project that simulates an e-commerce environment using minimal tech stack. It handles data ingestion, processing, storage, transformation, warehousing, and visualization efficiently.
 
-**ShopStream** is a simulated real-time data pipeline project designed for e-commerce analytics using a minimal yet powerful tech stack. It showcases the complete flow from data ingestion to visualization.
+## ⚙️ Tech Stack (Bare Minimum)
+| Component       | Technology                                             |
+| --------------- | ------------------------------------------------------ |
+| Ingestion       | Python (simulate stream), Kafka (optional)             |
+| Processing      | PySpark / Pandas                                       |
+| Storage         | Azure Blob / AWS S3 / CSV                              |
+| Transformation  | PySpark / SQL                                          |
+| Data Warehouse  | Azure Synapse / AWS Redshift / SQLite                  |
+| Visualization   | Power BI / Google Data Studio / Matplotlib             |
+| Orchestration   | Python / (optional: Airflow)                           |
+| Version Control | Git + GitHub                                           |
 
-## 🧰 Tech Stack
-
-- **Ingestion**: Python
-- **Processing**: Pandas
-- **Storage**: Local CSV
-- **Transformation**: SQL / Pandas
-- **Warehouse**: SQLite
-- **Visualization**: Matplotlib, Seaborn
-- **Orchestration**: Python Scripts
-- **Version Control**: Git & GitHub
-
-## 📁 Folder Structure
-
+## 📁 Project Structure
