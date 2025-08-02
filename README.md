@@ -20,3 +20,11 @@
 | Version Control | Git + GitHub                                           |
 
 ## 📁 Project Structure
+shopstream/
+├── data/ # Raw input CSVs or streamed events
+├── ingestion/ # Stream simulator and data ingestion
+├── processing/ # Transformation scripts (PySpark/Pandas)
+├── storage/ # Uploading to S3/Blob or saving locally
+├── warehouse/ # SQLite/Redshift/Synapse storage layer
+├── visualization/ # Reports, dashboards, or Python plots
+├── orchestrator/ # Script to automate end-to-end pipeline
